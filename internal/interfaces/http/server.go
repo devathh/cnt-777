@@ -1,11 +1,12 @@
 package server
 
 import (
+	"github.com/cnt-777/internal/interfaces/http/handlers"
 	"github.com/cnt-777/internal/interfaces/http/routes"
 	"github.com/gin-gonic/gin"
 )
 
-func New() *gin.Engine {
+func New(handler *handlers.Handler) *gin.Engine {
 	r := gin.Default()
 
 	// TODO: uncomment
@@ -13,7 +14,7 @@ func New() *gin.Engine {
 	r.Static("css", "./web/static/css/")
 	r.Static("js", "./web/static/js/")
 
-	routes.Setup(r)
+	routes.Setup(r, handler)
 
 	return r
 }

@@ -5,6 +5,7 @@ import (
 	"os"
 
 	server "github.com/cnt-777/internal/interfaces/http"
+	"github.com/cnt-777/internal/interfaces/http/handlers"
 	"github.com/cnt-777/pkg/log"
 )
 
@@ -23,7 +24,8 @@ func main() {
 
 	l.Debug("logger inited")
 
-	r := server.New()
+	h := handlers.NewHandler(l)
+	r := server.New(h)
 
 	l.Info("server started")
 	r.Run("0.0.0.0:8080")

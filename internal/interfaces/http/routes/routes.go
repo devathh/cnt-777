@@ -6,17 +6,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Setup(r *gin.Engine) {
+func Setup(r *gin.Engine, handler *handlers.Handler) {
 	// client
-	r.GET("/", handlers.HomePage)
-	r.GET("/blackjack", handlers.BlackjackPage)
+	r.GET("/", handler.HomePage())
+	r.GET("/blackjack", handler.BlackjackPage())
 
-	r.GET("ws/blackjack", handlers.BlackjackWS)
+	r.GET("ws/blackjack", handler.BlackjackWS())
 
 	// staff
-	r.GET("/dealer", middlewares.IsStaff, handlers.DealerPage)
-	r.GET("/scanner", middlewares.IsStaff, handlers.ScannerPage)
+	r.GET("/dealer", middlewares.IsStaff, handler.DealerPage())
+	r.GET("/scanner", middlewares.IsStaff, handler.ScannerPage())
 
-	r.GET("ws/dealer", handlers.DealerWS)
-	r.GET("ws/scanner", handlers.ScannerWS)
+	r.GET("ws/dealer", handler.DealerWS())
+	r.GET("ws/scanner", handler.ScannerWS())
 }
