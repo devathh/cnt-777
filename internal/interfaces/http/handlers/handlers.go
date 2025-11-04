@@ -31,7 +31,7 @@ func NewHandler(log *slog.Logger) *Handler {
 
 func (h *Handler) HomePage() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-
+		ctx.HTML(http.StatusOK, "home.html", nil)
 	}
 }
 

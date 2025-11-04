@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+:root {
+    --bg: hsl(0, 0%, 5%);
+    --bg-dark: hsl(0, 0%, 5%);
+    --bg-light:hsl(0, 0%, 10%);
+    --text-color-dark: hsl(0, 0%, 5%);
+    --text-color-light: hsl(0, 0%, 95%);
+    --primary-color: hsl(27, 100%, 50%);
+    --secondary-color: hsl(279, 90%, 35%);
+}
+
+* {
+    margin: 0; padding: 0;
+    outline: none; border: none;
+    font-family: Montserrat , sans-serif;
+}
+
+html, body {
+    width: 100vw;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(3px);
+}
+
+.bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(transparent, black 80%);
+}
+
+.bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+.hidden {
+    display: none;
+}
+
+.disclaimer-top {
+    display: flex;
+    justify-content: center;
+    background: lightcoral;
+    color: var(--text-color-dark);
+}
+
+header {
+    position: fixed;
+    padding-left: 1vh;
+    display: flex;
+    align-items: center;
+    top: 5vh;
+    right: 5vw;
+    border-radius: 1vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all .3s;
+}
+
+header:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px 3px black;
+}
+
+.material-symbols-outlined {
+    cursor: default;
+    color: var(--text-color-light);
+}
+
+header input {
+    padding: 1vh;
+    width: 10vw;
+    text-align: center;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color-light);
+}
+
+.container {
+    padding-top: 10vh;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+}
+
+.mode {
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 1vw;
+    gap: 1vw;
+    cursor: pointer;
+    box-shadow: 0 0 20px black;
+    transition: all .3s;
+}
+
+.mode:not(.blocked):hover {
+    transform: scale(1.01) translateY(-5px);
+    box-shadow: 0 0 50px 5px black;
+}
+
+.mode span {
+    text-align: center;
+    color: var(--text-color-light);
+    font-size: 3vw;
+    font-weight: 600;
+}
+
+.mode img {
+    width: 25vw;
+    border-radius: 1vw;
+}
+
+.blocked {
+    cursor: no-drop;
+}
+
+footer {
+    display: flex;
+    justify-content: end;
+}
+
+footer button {
+    background: transparent;
+    color: hsl(0, 0%, 30%);
+    cursor: pointer;
+    box-shadow: 0 0 50px 5px black;
+    transition: all .1s;
+}
+
+footer button:hover {
+    color: hsl(0, 0%, 70%);
+}
+
+#user-agreement {
+    padding: 2vh;
+    width: 90%;
+    max-width: 800px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    height: fit-content;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 1vw;
+    color: var(--text-color-light);
+}
+
+#user-agreement button {
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(90deg, 
+        #ff0000,
+        #ff8000,
+        #ffff00,
+        #80ff00,
+        #00ff00,
+        #00ff80,
+        #00ffff,
+        #0080ff,
+        #0000ff,
+        #8000ff,
+        #ff00ff,
+        #ff0080,
+        #ff0000 
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow 3s linear infinite;
+    cursor: pointer;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}

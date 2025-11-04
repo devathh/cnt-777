@@ -9,10 +9,10 @@ import (
 func New(handler *handlers.Handler) *gin.Engine {
 	r := gin.Default()
 
-	// TODO: uncomment
-	// r.LoadHTMLGlob("./web/templates/*")
+	r.LoadHTMLGlob("./web/templates/*")
 	r.Static("css", "./web/static/css/")
 	r.Static("js", "./web/static/js/")
+	r.Static("img", "./web/static/images/")
 
 	routes.Setup(r, handler)
 
